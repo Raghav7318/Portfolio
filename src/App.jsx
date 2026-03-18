@@ -86,9 +86,25 @@ function App() {
                     {item}
                   </a>
                 ))}
+                <a
+                  href={`${import.meta.env.BASE_URL}resume.html`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs uppercase tracking-[0.18em] text-amber-300 transition hover:text-amber-200"
+                >
+                  Resume
+                </a>
               </nav>
 
               <div className="flex items-center gap-2">
+                <a
+                  href={`${import.meta.env.BASE_URL}resume.html`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-md border border-amber-300/50 bg-amber-300/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-amber-200 transition hover:bg-amber-300/20 md:hidden"
+                >
+                  Resume
+                </a>
                 <SoundToggle />
                 <ThemeToggle theme={theme} onToggle={toggleTheme} />
               </div>

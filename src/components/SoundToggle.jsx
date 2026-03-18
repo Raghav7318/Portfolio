@@ -12,6 +12,12 @@ function SoundToggle() {
     }
   }, []);
 
+  const vibrate = () => {
+    if (navigator.vibrate) {
+      navigator.vibrate([15, 10, 15]);
+    }
+  };
+
   const beep = async () => {
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     if (!AudioCtx) return;
@@ -24,23 +30,24 @@ function SoundToggle() {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
-    osc.type = "triangle";
-    osc.frequency.value = 520;
-    gain.gain.value = 0.0001;
+    osc.type = "sine";
+    osc.frequency.value = 800;
+    gain.gain.value = 0;
 
     osc.connect(gain);
     gain.connect(ctx.destination);
 
     const now = ctx.currentTime;
-    gain.gain.exponentialRampToValueAtTime(0.015, now + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+    gain.gain.linearRampToValueAtTime(0.3, now + 0.05);
+    gain.gain.linearRampToValueAtTime(0, now + 0.2);
 
     osc.start(now);
-    osc.stop(now + 0.12);
+    osc.stop(now + 0.2);
   };
 
   const handleToggle = async () => {
     setEnabled((prev) => !prev);
+    vibrate();
     await beep();
   };
 

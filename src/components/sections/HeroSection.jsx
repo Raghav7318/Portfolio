@@ -7,6 +7,22 @@ function HeroSection() {
 
   return (
     <section className="relative flex min-h-[88vh] flex-col justify-center py-12 sm:py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.12, duration: 0.6 }}
+        className="mb-8 flex justify-center lg:hidden"
+      >
+        <div className="relative h-52 w-52 overflow-hidden rounded-3xl border border-cyan-300/35 bg-slate-900">
+          <img
+            src={`${import.meta.env.BASE_URL}profile.jpg`}
+            alt="Raghav Kumar"
+            className="h-full w-full object-contain"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-300/10 via-transparent to-pink-300/10" />
+        </div>
+      </motion.div>
+
       <div className="absolute right-0 top-20 hidden lg:flex lg:items-center lg:justify-center">
         <div className="relative h-64 w-64">
           <motion.div

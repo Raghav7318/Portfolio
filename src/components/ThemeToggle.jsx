@@ -1,11 +1,18 @@
 import { motion } from "framer-motion";
 
 function ThemeToggle({ theme, onToggle }) {
+  const handleThemeToggle = () => {
+    if (navigator.vibrate) {
+      navigator.vibrate(20);
+    }
+    onToggle();
+  };
+
   return (
     <motion.button
       whileTap={{ scale: 0.95 }}
       whileHover={{ scale: 1.04 }}
-      onClick={onToggle}
+      onClick={handleThemeToggle}
       className="relative inline-flex h-9 w-20 items-center rounded-full border border-white/20 bg-white/5 p-1 shadow-neon backdrop-blur-md"
       aria-label="Toggle color theme"
     >

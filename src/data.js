@@ -9,31 +9,31 @@ export const skills = [
 
 export const projects = [
   {
-    title: "Neural Commerce",
+    title: "Events Agency Website",
     description:
-      "A high-conversion ecommerce platform with personalized recommendations and real-time analytics dashboards.",
-    tech: ["React", "Node", "PostgreSQL", "Redis"],
+      "A modern event agency showcase website with polished sections, service highlights, and conversion-focused layouts.",
+    tech: ["Web Design", "Landing Page", "UI/UX"],
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    link: "#",
+    link: "https://weblium.com/templates/demo/events-agency-website-design-83",
   },
   {
-    title: "PulseBoard",
+    title: "Bagisto",
     description:
-      "A collaborative issue triage tool featuring live cursors, event streams, and AI-assisted sprint planning.",
-    tech: ["Vite", "Socket.io", "Prisma", "Tailwind"],
+      "An open-source Laravel ecommerce platform with modular architecture, multi-store support, and extensible APIs.",
+    tech: ["Laravel", "Ecommerce", "Open Source"],
     image:
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
-    link: "#",
+    link: "https://bagisto.com/en/",
   },
   {
-    title: "CyberOps Monitor",
+    title: "Final Project",
     description:
-      "Observability cockpit for microservices with distributed tracing views and anomaly-aware alerting.",
-    tech: ["Next.js", "Go", "Prometheus", "Docker"],
+      "A project showcase portal focused on final-year and capstone work with structured listings and discoverable content.",
+    tech: ["Web Platform", "Projects", "Directory"],
     image:
       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    link: "#",
+    link: "https://www.finalproject.in/",
   },
 ];
 
