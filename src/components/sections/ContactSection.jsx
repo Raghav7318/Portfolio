@@ -13,6 +13,8 @@ function ContactSection() {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const validate = () => {
     const next = {};
@@ -36,16 +38,35 @@ function ContactSection() {
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     setSubmitted(false);
+    setSubmitError("");
 
     if (!validate()) {
       return;
     }
 
-    setSubmitted(true);
-    setValues(initialValues);
+    try {
+      setSubmitting(true);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const result = await response.json();
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || "Failed to save message.");
+      }
+
+      setSubmitted(true);
+      setValues(initialValues);
+    } catch (error) {
+      setSubmitError(error.message || "Unable to submit the form.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -117,9 +138,16 @@ function ContactSection() {
         </label>
 
         <div className="flex items-center gap-4">
-          <RippleButton type="submit">Send Message</RippleButton>
+          <RippleButton type="submit" disabled={submitting}>
+            {submitting ? "Saving..." : "Send Message"}
+          </RippleButton>
           {submitted ? (
-            <p className="text-sm text-cyan-200">Message sent successfully.</p>
+            <p className="text-sm text-cyan-200">
+              Message saved to project folder.
+            </p>
+          ) : null}
+          {submitError ? (
+            <p className="text-sm text-pink-300">{submitError}</p>
           ) : null}
         </div>
       </motion.form>

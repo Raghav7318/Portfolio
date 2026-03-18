@@ -27,6 +27,9 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# Contact submissions
+submissions/*.txt
+
 # Personal files
 RAGHAV 1 BIO DATA (1).pdf
 WhatsApp Image 2026-03-18 at 16.58.25.jpeg

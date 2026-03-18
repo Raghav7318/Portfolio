@@ -15,7 +15,7 @@ function HeroSection() {
       >
         <div className="relative h-52 w-52 overflow-hidden rounded-3xl border border-cyan-300/35 bg-slate-900">
           <img
-            src={`${import.meta.env.BASE_URL}profile.jpg`}
+            src={`${import.meta.env.BASE_URL}profile.jpeg`}
             alt="Raghav Kumar"
             className="h-full w-full object-contain"
           />
@@ -30,7 +30,7 @@ function HeroSection() {
             className="relative h-full w-full overflow-hidden rounded-3xl border border-cyan-300/35 bg-slate-900"
           >
             <img
-              src={`${import.meta.env.BASE_URL}profile.jpg`}
+              src={`${import.meta.env.BASE_URL}profile.jpeg`}
               alt="Raghav Kumar"
               className="h-full w-full object-contain"
             />

@@ -43,10 +43,24 @@
         font-size: 13px;
         color: #666;
         margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
       }
 
-      .contact-info p {
-        margin: 3px 0;
+      .contact-info .info-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        text-align: left;
+      }
+
+      .contact-info .info-row span {
+        flex: 1;
+      }
+
+      .contact-info .info-row span:last-child {
+        text-align: right;
       }
 
       section {
@@ -126,6 +140,17 @@
           padding: 20px;
         }
       }
+
+      @media (max-width: 640px) {
+        .contact-info .info-row {
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .contact-info .info-row span:last-child {
+          text-align: left;
+        }
+      }
     </style>
   </head>
   <body>
@@ -133,9 +158,21 @@
       <header>
         <h1>RAGHAV KUMAR</h1>
         <div class="contact-info">
-          <p>📧 raghav852121@gmail.com | 📱 7808129028</p>
-          <p>📍 Panchgachiya, Saharsa, Bihar - 852124, India</p>
-          <p>🗓️ DOB: 10-12-1999 | 🌐 Languages: Hindi, English</p>
+          <div class="info-row">
+            <span>👩 Mother's Name: Gita Devi</span>
+            <span>👨 Father's Name: Sudhir Ram</span>
+          </div>
+          <div class="info-row">
+            <span>📧 raghav852121@gmail.com</span>
+            <span>📱 7808129028</span>
+          </div>
+          <div class="info-row">
+            <span>🗓️ DOB: 10-12-1999</span>
+            <span>📍 Panchgachiya, Saharsa, Bihar - 852124, India</span>
+            <!-- <span>🌐 Languages: Hindi, English</span> -->
+          </div>
+
+          <div class="info-row"></div>
         </div>
       </header>
 
@@ -277,8 +314,7 @@
           <strong>Certifications:</strong> Available upon request<br />
           <strong>Portfolio:</strong>
           https://raghav7318.github.io/Portfolio/<br />
-          <strong>LinkedIn:</strong> linkedin.com<br />
-          <strong>GitHub:</strong> github.com
+          <strong>GitHub:</strong> https://github.com/Raghav7318
         </p>
       </section>
 
