@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #06070c;
+  --bg-alt: #0d1020;
+  --text-main: #e6f3ff;
+  --grid-line: rgba(130, 147, 255, 0.1);
+}
+
+body[data-theme="neon"] {
+  --bg-main: #06070c;
+  --bg-alt: #121636;
+  --text-main: #eaf5ff;
+  --grid-line: rgba(91, 239, 255, 0.12);
+}
+
+body[data-theme="pulse"] {
+  --bg-main: #09060f;
+  --bg-alt: #1a1228;
+  --text-main: #fdefff;
+  --grid-line: rgba(255, 124, 231, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(57, 132, 255, 0.19),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(255, 45, 204, 0.17),
+      transparent 42%
+    ),
+    linear-gradient(160deg, var(--bg-main), var(--bg-alt));
+  color: var(--text-main);
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Sora", "Space Grotesk", sans-serif;
+}
+
+aurora-grid,
+.aurora-grid {
+  position: relative;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.aurora-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 231, 255, 0.08),
+    rgba(159, 104, 255, 0.08),
+    rgba(255, 42, 212, 0.08)
+  );
+  animation: gridShift 18s linear infinite;
+}
+
+@keyframes gridShift {
+  from {
+    transform: translateX(-4%);
+  }
+  to {
+    transform: translateX(4%);
+  }
+}
+
+.particle {
+  position: absolute;
+  height: 4px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 231, 255, 0.9),
+    rgba(255, 42, 212, 0.9)
+  );
+  filter: blur(0.4px);
+}
+
+.custom-cursor {
+  pointer-events: none;
+  position: fixed;
+  z-index: 60;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 231, 255, 0.75);
+  background: radial-gradient(
+    circle,
+    rgba(0, 231, 255, 0.35),
+    rgba(0, 231, 255, 0.05)
+  );
+  mix-blend-mode: screen;
+}
+
+.custom-cursor-trail {
+  pointer-events: none;
+  position: fixed;
+  z-index: 59;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  box-shadow: 0 0 35px rgba(255, 42, 212, 0.4);
+}
+
+@media (pointer: coarse) {
+  .custom-cursor,
+  .custom-cursor-trail {
+    display: none;
+  }
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  transform: scale(0);
+  animation: ripple 0.55s ease-out;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .aurora-grid::after,
+  .particle,
+  .ripple {
+    animation: none !important;
+  }
+}
